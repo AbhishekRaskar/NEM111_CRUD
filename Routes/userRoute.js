@@ -16,7 +16,7 @@ userRouter.post("/register", async (req, res) => {
             else {
                 const user = new userModel({ ...req.body, pass: hash })
                 await user.save()
-                res.status(200).send("User Registered Successfully...")
+                res.status(200).json({msg:"User Registered Successfully..."})
             }
         })
 
