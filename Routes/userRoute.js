@@ -16,7 +16,7 @@ userRouter.post("/register", async (req, res) => {
             else {
                 const user = new userModel({ ...req.body, pass: hash })
                 await user.save()
-                res.status(200).json({msg:"User Registered Successfully..."})
+                res.status(200).json({ msg: "User Registered Successfully..." })
             }
         })
 
@@ -36,12 +36,12 @@ userRouter.post("/login", async (req, res) => {
                     res.status(200).json({ msg: "Login Successfull.....", token: token })
                 }
                 else {
-                    res.status(400).send("Wrong Credentials.....")
+                    res.status(400).json({ msg: "Wrong Credentials....." })
                 }
             })
         }
         else {
-            res.status(400).send("User Not Found.....")
+            res.status(400).json({ msg: "User Not Found....." })
         }
 
     } catch (error) {
